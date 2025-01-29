@@ -20,6 +20,7 @@ func ExecCommands(commands string, stopWhenError bool) error {
 		if len(line) <= 0 || strings.HasPrefix(line, "#") {
 			continue
 		}
+		fmt.Errorf("%v", line)
 		out, err := exec.Command("sh", "-c", line).CombinedOutput()
 		if err != nil {
 			e = fmt.Errorf("ExecCommands: %v %v: %w", line, string(out), err)
